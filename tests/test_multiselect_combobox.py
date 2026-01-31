@@ -2,13 +2,13 @@ import sys
 import types
 import pytest
 
-from PyQt6.QtWidgets import QApplication
-from PyQt6.QtWidgets import QListView
-from PyQt6.QtTest import QTest
-from PyQt6.QtCore import QPoint
-from PyQt6.QtCore import Qt
+from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QListView
+from PySide6.QtTest import QTest
+from PySide6.QtCore import QPoint
+from PySide6.QtCore import Qt
 
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 @pytest.fixture(scope="session")
@@ -250,7 +250,7 @@ def test_selection_changed_respects_output_type(qapp):
 
 def test_placeholder_and_current_text_when_none_selected(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # default: no placeholder -> empty string
     c.setDisplayType("text")
     assert c.currentText() == ""
@@ -283,7 +283,7 @@ def test_set_current_text_empty_string_clears_selection(combo: MultiSelectComboB
 
 def test_select_all_custom_text_and_find_indices(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setSelectAllEnabled(True, text="Everything")
     assert c.model().rowCount() == 4
     # findText should return index of option rows, not pseudo-item by default queries
@@ -303,7 +303,7 @@ def test_duplicates_enabled_allows_duplicates(qapp):
 
 def test_toggle_select_all_off_removes_row(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.setSelectAllEnabled(True)
     assert c.model().rowCount() == 3
     c.setSelectAllEnabled(False)
@@ -314,7 +314,7 @@ def test_toggle_select_all_off_removes_row(qapp):
 
 def test_display_delimiter_variations_affect_set_current_text(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setDisplayDelimiter(";", space_after=False, space_before=False)
     c.setCurrentText("A;B")
     assert c.getCurrentIndexes() == [0, 1]
@@ -325,7 +325,7 @@ def test_display_delimiter_variations_affect_set_current_text(qapp):
 
 def test_invert_selection_with_select_all_enabled(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setSelectAllEnabled(True)
     c.clearSelection()
     c.invertSelection()
@@ -339,7 +339,7 @@ def test_invert_selection_with_select_all_enabled(qapp):
 
 def test_event_filter_clicks_and_select_all_toggle(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setSelectAllEnabled(True)
     c.show()
     qapp.processEvents()
@@ -384,7 +384,7 @@ def test_max_selection_zero_and_negative_disable_limit(qapp):
 
 def test_line_edit_click_toggles_popup(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.show()
     qapp.processEvents()
     # Open popup explicitly to ensure consistent state
@@ -402,7 +402,7 @@ def test_line_edit_click_toggles_popup(qapp):
 
 def test_popup_lifecycle_timer_and_line_edit_toggle(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.show()
     qapp.processEvents()
     # showPopup sets flag
@@ -420,7 +420,7 @@ def test_show_and_resize_events_update_text(qapp):
     c = MultiSelectComboBox()
     c.setDisplayType("text")
     c.setPlaceholderText("Pick items")
-    c.addItems(["Alpha", "Beta"]) 
+    c.addItems(["Alpha", "Beta"])
     # Before show, line edit text may not be set; show should update
     c.show()
     qapp.processEvents()
@@ -471,7 +471,7 @@ def test_keyboard_space_enter_toggle(qapp):
 
 def test_close_on_select_behavior(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.setSelectAllEnabled(True)
     c.setCloseOnSelect(True)
     c.show()
@@ -488,7 +488,7 @@ def test_close_on_select_behavior(qapp):
 
 def test_item_flags_include_selectable(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A"]) 
+    c.addItems(["A"])
     flags = c.model().item(0).flags()
     assert bool(flags & Qt.ItemFlag.ItemIsSelectable)
 
@@ -501,7 +501,7 @@ def test_placeholder_sets_native(qapp):
 
 def test_output_role_and_misc_apis(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Manually set a different role's data for first item
     c.model().item(0).setData("dispA", int(Qt.ItemDataRole.DisplayRole))
     # Switch output role to DisplayRole and select first
@@ -523,7 +523,7 @@ def test_output_role_and_misc_apis(qapp):
 
 
 def test_runtime_set_model_and_role_switch(qapp):
-    from PyQt6.QtGui import QStandardItemModel, QStandardItem
+    from PySide6.QtGui import QStandardItemModel, QStandardItem
 
     c = MultiSelectComboBox()
     # Build a custom model like the runtime role switch demo
@@ -600,7 +600,7 @@ def test_filter_enable_disable_and_row_hiding(qapp):
 
 
 def test_filter_persists_across_model_changes(qapp):
-    from PyQt6.QtGui import QStandardItem
+    from PySide6.QtGui import QStandardItem
 
     c = MultiSelectComboBox()
     c.addItems(["One", "Two", "Three"])  # 3 items
@@ -636,7 +636,7 @@ def test_filter_persists_across_model_changes(qapp):
 
 def test_filter_keeps_select_all_visible(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setSelectAllEnabled(True)
     c.setFilterEnabled(True)
     c.show()
@@ -655,7 +655,7 @@ def test_filter_keeps_select_all_visible(qapp):
 
 def test_display_delimiter_with_embedded_spaces(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Provide a delimiter that already contains spaces; widget should respect it verbatim
     c.setDisplayDelimiter(" | ")
     c.setCurrentIndexes([0, 1])
@@ -665,7 +665,7 @@ def test_display_delimiter_with_embedded_spaces(qapp):
 
 def test_display_delimiter_spacing_flags(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.setDisplayDelimiter(";", space_after=False, space_before=True)
     c.setCurrentIndexes([0, 1])
     assert c.getDisplayDelimiter() == " ;"
@@ -682,7 +682,7 @@ def test_invalid_output_and_display_type_raise(qapp):
 
 def test_set_current_text_with_iterable_mixed_types(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"], ["da", "db"]) 
+    c.addItems(["A", "B"], ["da", "db"])
     # Mixed iterable including a dict that doesn't match; only "A" should be selected
     c.setCurrentText([{ "k": 1 }, "A"])  # dict will be str()-ed and won't match
     assert c.getCurrentIndexes() == [0]
@@ -690,7 +690,7 @@ def test_set_current_text_with_iterable_mixed_types(qapp):
 
 def test_find_data_with_custom_role(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Set custom role on B and search using that role
     role = int(Qt.ItemDataRole.DisplayRole)
     c.model().item(1).setData("Bee", role)
@@ -710,7 +710,7 @@ def test_select_all_enabled_on_empty_model_no_crash(qapp):
 
 
 def test_set_model_twice_disconnects_and_reconnects(qapp):
-    from PyQt6.QtGui import QStandardItemModel, QStandardItem
+    from PySide6.QtGui import QStandardItemModel, QStandardItem
     c = MultiSelectComboBox()
     m1 = QStandardItemModel()
     it1 = QStandardItem("One")
@@ -733,7 +733,7 @@ def test_set_model_twice_disconnects_and_reconnects(qapp):
 
 def test_get_current_options_respects_output_role(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Set custom DisplayRole data for first item
     c.model().item(0).setData("dispA", int(Qt.ItemDataRole.DisplayRole))
     c.setCurrentIndexes([0])
@@ -767,7 +767,7 @@ def test_get_current_options_respects_output_role(qapp):
 
 
 def test_runtime_model_rows_and_reset_paths(qapp):
-    from PyQt6.QtGui import QStandardItemModel, QStandardItem
+    from PySide6.QtGui import QStandardItemModel, QStandardItem
 
     c = MultiSelectComboBox()
     m = QStandardItemModel()
@@ -801,7 +801,7 @@ def test_runtime_model_rows_and_reset_paths(qapp):
 
 def test_accessible_names_update_with_selection(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     # Initially none selected
     qapp.processEvents()
     assert "No items selected." in (c.accessibleName() or "")
@@ -822,7 +822,7 @@ def test_accessible_names_update_with_selection(qapp):
 
 def test_aria_like_hints_tooltips_and_status_tips(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.setSelectAllEnabled(True)
     c.show()
     qapp.processEvents()
@@ -860,14 +860,14 @@ def test_aria_like_hints_tooltips_and_status_tips(qapp):
 
 def test_line_edit_has_clear_button_enabled(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Clear button should be enabled on the internal line edit
     assert c.lineEdit().isClearButtonEnabled() is True
 
 
 def test_clear_slot_clears_selection_and_emits_once(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setCurrentIndexes([0, 2])
     captured = []
 
@@ -893,7 +893,7 @@ def test_clear_slot_clears_selection_and_emits_once(qapp):
 
 def test_line_edit_blocks_typing(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.setDisplayType("text")
     c.show()
     qapp.processEvents()
@@ -907,7 +907,7 @@ def test_line_edit_blocks_typing(qapp):
 
 def test_keyboard_enter_toggle_paths(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setSelectAllEnabled(True)
     c.show()
     qapp.processEvents()
@@ -926,14 +926,14 @@ def test_keyboard_enter_toggle_paths(qapp):
 
 def test_type_selection_text_branch(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Ensure typeSelection returns text when requested explicitly
     assert c.typeSelection(0, "text", expected_type="data") == "A"
 
 
 def test_line_edit_clear_button_action_clears_selection(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.setDisplayType("text")
     c.setCurrentIndexes([0, 1])
     qapp.processEvents()
@@ -1001,7 +1001,7 @@ def test_invert_selection_with_limit_respects_capacity(qapp):
 def test_tooltip_mirrors_current_text_when_enabled(qapp):
     c = MultiSelectComboBox()
     c.setDisplayType("text")
-    c.addItems(["Alpha", "Beta", "Gamma"]) 
+    c.addItems(["Alpha", "Beta", "Gamma"])
     c.setCurrentIndexes([0, 2])
     qapp.processEvents()
     # By default tooltip sync is enabled; tooltip should equal full currentText
@@ -1036,7 +1036,7 @@ def test_tooltip_stays_full_on_resize_and_elision(qapp):
 def test_disabling_tooltip_sync_stops_updates(qapp):
     c = MultiSelectComboBox()
     c.setDisplayType("text")
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setCurrentIndexes([0, 1])
     qapp.processEvents()
     synced_tip = c.toolTip()
@@ -1134,7 +1134,7 @@ def test_external_over_selection_is_enforced(qapp):
 
 def test_close_on_select_mouse_item_hides_popup_and_view(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setCloseOnSelect(True)
     c.show()
     qapp.processEvents()
@@ -1155,7 +1155,7 @@ def test_close_on_select_mouse_item_hides_popup_and_view(qapp):
 
 def test_show_popup_reopens_immediately_after_close_on_select(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setCloseOnSelect(True)
     c.show()
     qapp.processEvents()
@@ -1179,7 +1179,7 @@ def test_show_popup_reopens_immediately_after_close_on_select(qapp):
 
 def test_close_on_select_mouse_select_all_row_hides_popup_and_view(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B", "C"]) 
+    c.addItems(["A", "B", "C"])
     c.setSelectAllEnabled(True)
     c.setCloseOnSelect(True)
     c.show()
@@ -1226,7 +1226,7 @@ def test_mouse_click_does_not_toggle_disabled_item(qapp):
     idx = c.model().index(1, 0)
     rect = c.view().visualRect(idx)
     pos = rect.center()
-    from PyQt6.QtTest import QTest
+    from PySide6.QtTest import QTest
     QTest.mouseClick(c.view().viewport(), Qt.MouseButton.LeftButton, Qt.KeyboardModifier.NoModifier, pos)
     # Disabled row should not become selected
     assert c.getCurrentIndexes() == []
@@ -1234,7 +1234,7 @@ def test_mouse_click_does_not_toggle_disabled_item(qapp):
 
 
 def test_keyboard_toggle_ignored_for_disabled_item(qapp):
-    from PyQt6.QtTest import QTest
+    from PySide6.QtTest import QTest
     c = MultiSelectComboBox()
     c.addItem("Enabled", enabled=True)
     c.addItem("Disabled", enabled=False)
@@ -1335,7 +1335,7 @@ def test_remove_items_bulk_and_select_all_resync(qapp):
 
 def test_remove_item_does_not_remove_select_all_row(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     c.setSelectAllEnabled(True)
     # Attempt to remove index 0 (Select All) -> should be ignored
     before = c.model().rowCount()
@@ -1389,14 +1389,14 @@ def test_view_virtualization_setters(qapp):
 # --- Coalescing (lazy update) controls ---
 def test_is_update_coalesced_flag_transitions(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Ensure coalescing is enabled (default)
     assert c.isCoalescingEnabled() is True
     # Adding items emits rowsInserted -> a coalesced update is scheduled
     assert c.isUpdateCoalesced() is True
     qapp.processEvents()
     # Allow QTimer.singleShot(0, ...) to fire
-    from PyQt6.QtTest import QTest
+    from PySide6.QtTest import QTest
     QTest.qWait(1)
     qapp.processEvents()
     assert c.isUpdateCoalesced() is False
@@ -1412,7 +1412,7 @@ def test_is_update_coalesced_flag_transitions(qapp):
 
 def test_disable_coalescing_performs_immediate_update(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Disable lazy updates
     c.setCoalescingEnabled(False)
     assert c.isCoalescingEnabled() is False
@@ -1433,7 +1433,7 @@ def test_disable_coalescing_performs_immediate_update(qapp):
 
 def test_disabling_coalescing_flushes_pending_update(qapp):
     c = MultiSelectComboBox()
-    c.addItems(["A", "B"]) 
+    c.addItems(["A", "B"])
     # Ensure coalescing enabled; schedule an update
     c.setCoalescingEnabled(True)
     captured = []

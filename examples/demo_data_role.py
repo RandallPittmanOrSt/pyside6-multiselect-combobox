@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # Demo: Using data role outputs (currentData) vs text
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

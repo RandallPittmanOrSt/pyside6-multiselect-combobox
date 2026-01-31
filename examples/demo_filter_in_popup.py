@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Demo: in-popup filter for MultiSelectComboBox
 
-from PyQt6.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
@@ -10,9 +10,9 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QHBoxLayout,
 )
-from PyQt6.QtCore import Qt
+from PySide6.QtCore import Qt
 
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

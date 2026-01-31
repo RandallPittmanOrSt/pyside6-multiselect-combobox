@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # Demo: Switching output data role at runtime
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import (
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
@@ -10,7 +10,7 @@ from PyQt6.QtWidgets import (
     QLabel,
     QPushButton,
 )
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():
@@ -30,8 +30,8 @@ def main():
     combo.setDisplayDelimiter(", ")
 
     # Store different values under DisplayRole and UserRole to demonstrate switching
-    from PyQt6.QtGui import QStandardItem
-    from PyQt6.QtGui import QStandardItemModel
+    from PySide6.QtGui import QStandardItem
+    from PySide6.QtGui import QStandardItemModel
 
     model = QStandardItemModel()
 

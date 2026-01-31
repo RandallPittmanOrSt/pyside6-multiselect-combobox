@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout
-from PyQt6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QHBoxLayout
+from PySide6.QtCore import Qt
 
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 class Demo(QWidget):

@@ -2,15 +2,15 @@
 # Demo: Custom arrow icon with hover/focus styles
 
 from pathlib import Path
-from PyQt6.QtGui import QPalette, QColor
-from PyQt6.QtWidgets import (
+from PySide6.QtGui import QPalette, QColor
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
     QWidget,
     QLabel,
 )
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def make_stylesheet(arrow_path: str) -> str:

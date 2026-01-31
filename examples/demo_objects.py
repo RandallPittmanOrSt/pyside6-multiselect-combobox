@@ -2,9 +2,9 @@
 # Demo: Storing custom Python objects as item data and reading them back
 
 from dataclasses import dataclass, asdict
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 @dataclass

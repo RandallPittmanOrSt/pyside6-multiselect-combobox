@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Demo: View virtualization (uniform item sizes + batched layout)
 
-from PyQt6.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
@@ -12,7 +12,7 @@ from PyQt6.QtWidgets import (
     QSpinBox,
     QCheckBox,
 )
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

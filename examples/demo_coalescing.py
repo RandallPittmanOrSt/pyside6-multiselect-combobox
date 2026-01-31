@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Demo: Toggle coalescing (lazy text recompute) on/off and observe behavior
 
-from PyQt6.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
@@ -10,10 +10,10 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QHBoxLayout,
 )
-from PyQt6.QtCore import QTimer, Qt
-from PyQt6.QtTest import QTest
+from PySide6.QtCore import QTimer, Qt
+from PySide6.QtTest import QTest
 
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

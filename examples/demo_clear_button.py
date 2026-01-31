@@ -6,8 +6,8 @@ Demo: Clear button in the line edit clears selection.
 - The internal QLineEdit has its native clear button enabled.
 - Clicking the clear button (x icon) will clear the selection and update the label.
 """
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

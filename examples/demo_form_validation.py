@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Demo: Simple form validation requiring at least one selection
 
-from PyQt6.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
@@ -9,7 +9,7 @@ from PyQt6.QtWidgets import (
     QLabel,
     QPushButton,
 )
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # Demo: Per-item fonts/colors via item data roles
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor, QFont
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor, QFont
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

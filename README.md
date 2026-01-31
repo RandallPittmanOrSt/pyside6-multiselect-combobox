@@ -1,9 +1,15 @@
 # MultiSelectComboBox
 
-![CI - Tests](https://github.com/user0706/pyqt6-multiselect-combobox/actions/workflows/tests.yml/badge.svg?branch=main)
-[![codecov](https://codecov.io/gh/user0706/pyqt6-multiselect-combobox/graph/badge.svg)](https://app.codecov.io/gh/user0706/pyqt6-multiselect-combobox)
+![CI - Tests](https://github.com/RandallPittmanOrSt/pyside6-multiselect-combobox/actions/workflows/tests.yml/badge.svg?branch=main)
+<!--[![codecov](https://codecov.io/gh/user0706/pyqt6-multiselect-combobox/graph/badge.svg)](https://app.codecov.io/gh/user0706/pyqt6-multiselect-combobox)-->
 
-MultiSelectComboBox is a custom widget built using PyQt6 that provides a dropdown combo box allowing users to select multiple items. This widget is particularly useful in scenarios where users need to select multiple options from a list.
+MultiSelectComboBox is a custom widget built using PySide6 that provides a dropdown combo box allowing users to select multiple items. This widget is particularly useful in scenarios where users need to select multiple options from a list.
+
+## Fork
+
+This project is a fork of [PyQt6 MultiSelect
+ComboBox](https://github.com/user0706/pyqt6-multiselect-combobox), modified to work with
+PySide6 instead of PyQt6.
 
 ## Purpose
 The primary purpose of MultiSelectComboBox is to offer a user-friendly interface for selecting multiple items from a list efficiently. It allows users to choose from a set of options and displays the selected items in a compact manner.
@@ -23,20 +29,20 @@ The primary purpose of MultiSelectComboBox is to offer a user-friendly interface
  - **Duplicate Policy**: Control duplicates via `setDuplicatesEnabled(bool)`; enforced in `addItem`/`addItems`.
  - **Performance & Scaling**: Efficient with large item counts via a cached set of checked indices, coalesced UI refresh with `QTimer.singleShot(0, ...)`, and public batch APIs `beginUpdate()` / `endUpdate()`.
 
-See all features in [documentation](https://pyqt6-multiselect-combobox.readthedocs.io/en/latest/).
+See all features in [documentation](https://pyqt6-multiselect-combobox.readthedocs.io/en/latest/) of the original project.
 
 ## How to Use
-To use the MultiSelectComboBox widget in your PyQt6 application, follow these steps:
+To use the MultiSelectComboBox widget in your PySide6 application, follow these steps:
 
 1. **Installation**: Install the package using pip:
    ```
-   pip install pyqt6-multiselect-combobox
+   pip install git+https://github.com/RandallPittmanOrSt/pyside6-multiselect-combobox.git
    ```
 
    Or install from source (editable/development mode):
    ```bash
-   git clone https://github.com/user0706/pyqt6-multiselect-combobox.git
-   cd pyqt6-multiselect-combobox
+   git clone https://github.com/RandallPittmanOrSt/pyside6-multiselect-combobox.git
+   cd pyside6-multiselect-combobox
    pip install -e .
    ```
 
@@ -48,7 +54,7 @@ To use the MultiSelectComboBox widget in your PyQt6 application, follow these st
 
 2. **Import**: Import the MultiSelectComboBox class into your Python code:
    ```python
-   from pyqt6_multiselect_combobox import MultiSelectComboBox
+   from pyside6_multiselect_combobox import MultiSelectComboBox
    ```
 
 3. **Initialization**: Create an instance of MultiSelectComboBox:
@@ -88,7 +94,7 @@ To use the MultiSelectComboBox widget in your PyQt6 application, follow these st
    # select by joined string (uses display delimiter)
    multi_select_combo_box.setCurrentText("Apple, Banana")
    # or by list of strings (matches text or data)
-   multi_select_combo_box.setCurrentText(["Apple", "Orange"]) 
+   multi_select_combo_box.setCurrentText(["Apple", "Orange"])
    ```
 
 10. **Bulk Selection Helpers**:
@@ -110,7 +116,7 @@ To use the MultiSelectComboBox widget in your PyQt6 application, follow these st
    - By default, the output data role is `Qt.ItemDataRole.UserRole`, which aligns with Qt idioms for storing custom item data.
    - You can change which role is used when reading data with:
      ```python
-     from PyQt6.QtCore import Qt
+     from PySide6.QtCore import Qt
 
      multi_select_combo_box.setOutputDataRole(Qt.ItemDataRole.UserRole)
      role = multi_select_combo_box.getOutputDataRole()
@@ -131,21 +137,21 @@ To use the MultiSelectComboBox widget in your PyQt6 application, follow these st
 
 ## Example
 ```python
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("MultiSelectComboBox Example")
-        
+
         central_widget = QWidget()
         layout = QVBoxLayout()
         central_widget.setLayout(layout)
-        
+
         multi_select_combo_box = MultiSelectComboBox()
         multi_select_combo_box.addItems(["Apple", "Banana", "Orange"])
-        
+
         layout.addWidget(multi_select_combo_box)
         self.setCentralWidget(central_widget)
 
@@ -221,9 +227,9 @@ Screenshots and short GIFs demonstrating the widget in action are welcome! If yo
 -->
 
 ## Additional Notes
-- **Compatibility**: MultiSelectComboBox is compatible with PyQt6.
+- **Compatibility**: MultiSelectComboBox is compatible with PySide6.
 - **Duplicate Policy**: When duplicates are disabled (`setDuplicatesEnabled(False)`), `addItem`/`addItems` will skip adding any item whose text OR data matches an existing option. This check ignores the optional "Select All" item.
-- **Feedback and Contributions**: Feedback and contributions are welcome. Feel free to open an issue or submit a pull request on [GitHub](https://github.com/user0706/pyqt6-multiselect-combobox).
+- **Feedback and Contributions**: Feedback and contributions are welcome. Feel free to open an issue or submit a pull request on [GitHub](https://github.com/RandallPittmanOrSt/pyside6-multiselect-combobox).
 - **License**: This package is provided under the MIT License.
 
 ## Performance and Scaling
@@ -257,4 +263,4 @@ python -m pytest  # or: pytest
 
 Coverage configuration is provided via `pytest.ini`. It reports terminal summary and writes an XML report to `coverage.xml`.
 
-For more detailed usage and customization options, refer to the [documentation](https://pyqt6-multiselect-combobox.readthedocs.io/en/latest/).
+For more detailed usage and customization options, refer to the [documentation](https://pyqt6-multiselect-combobox.readthedocs.io/en/latest/) of the original project.

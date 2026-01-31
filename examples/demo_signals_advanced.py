@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # Demo: Advanced signal patterns with selectionChanged(list)
 
-from PyQt6.QtCore import pyqtSlot
-from PyQt6.QtWidgets import (
+from PySide6.QtCore import pyqtSlot
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QVBoxLayout,
@@ -10,7 +10,7 @@ from PyQt6.QtWidgets import (
     QLabel,
     QPushButton,
 )
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 class Window(QMainWindow):

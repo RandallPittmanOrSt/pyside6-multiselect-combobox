@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # Demo: Programmatic selection via setCurrentText (string and list forms)
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

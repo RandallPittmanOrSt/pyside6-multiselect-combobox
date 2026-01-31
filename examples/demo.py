@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # Minimal demo showcasing MultiSelectComboBox
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

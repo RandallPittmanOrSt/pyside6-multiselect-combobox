@@ -2,7 +2,7 @@ name: Tests and Coverage
 
 on:
   push:
-    branches: [ "**" ]
+    branches: ["**"]
   pull_request:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
 
     permissions:
       contents: read
-      id-token: write  # required for Codecov v4 tokenless uploads on public repos
+      id-token: write # required for Codecov v4 tokenless uploads on public repos
 
     steps:
       - name: Checkout repository
@@ -56,7 +56,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -e .
-          pip install pytest pytest-cov PyQt6 pytest-qt
+          pip install pytest pytest-cov pyside6 pytest-qt
 
       - name: Run tests with coverage (Linux, headless via Xvfb)
         if: ${{ runner.os == 'Linux' }}
@@ -64,13 +64,13 @@ jobs:
           xvfb-run -a pytest \
             --maxfail=1 \
             --disable-warnings \
-            --cov=pyqt6_multiselect_combobox \
+            --cov=pyside6_multiselect_combobox \
             --cov-report=term-missing \
             --cov-report=xml
 
       - name: Run tests with coverage (macOS/Windows)
         if: ${{ runner.os != 'Linux' }}
-        run: pytest --maxfail=1 --disable-warnings --cov=pyqt6_multiselect_combobox --cov-report=term-missing --cov-report=xml
+        run: pytest --maxfail=1 --disable-warnings --cov=pyside6_multiselect_combobox --cov-report=term-missing --cov-report=xml
 
       - name: Upload coverage.xml artifact
         uses: actions/upload-artifact@v4

@@ -1,6 +1,6 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
-from pyqt6_multiselect_combobox import MultiSelectComboBox
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
+from pyside6_multiselect_combobox import MultiSelectComboBox
 
 
 def main():

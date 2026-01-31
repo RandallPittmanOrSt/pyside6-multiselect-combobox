@@ -1,8 +1,8 @@
 from typing import Any, Iterable, List, Optional, Tuple
 
-from PyQt6.QtWidgets import QComboBox, QStyledItemDelegate, QLineEdit, QToolTip, QListView
-from PyQt6.QtGui import QStandardItem, QPalette, QFontMetrics, QCursor
-from PyQt6.QtCore import Qt, QEvent, pyqtSignal, QObject, QTimerEvent, QTimer
+from PySide6.QtWidgets import QComboBox, QStyledItemDelegate, QLineEdit, QToolTip, QListView
+from PySide6.QtGui import QStandardItem, QPalette, QFontMetrics, QCursor
+from PySide6.QtCore import Qt, QEvent, Signal, QObject, QTimerEvent, QTimer
 
 
 class MultiSelectComboBox(QComboBox):
@@ -26,11 +26,11 @@ class MultiSelectComboBox(QComboBox):
 
     # Emitted when the selection set changes. Emits list of currently selected values
     # based on output type (text or data), similar to currentData().
-    selectionChanged = pyqtSignal(list)
+    selectionChanged = Signal(list)
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        
+
         self.placeholderText = ""
         self.display_delimiter = ", "
         self.output_type = "data"
@@ -549,7 +549,7 @@ class MultiSelectComboBox(QComboBox):
         Returns:
             Any: The selected item's data (read using getOutputDataRole()) or the
                 item's text (str) depending on the requested type.
-        
+
         Note:
             When returning data, the value is read using the currently configured
             output data role (see setOutputDataRole/getOutputDataRole). By default,
@@ -726,7 +726,7 @@ class MultiSelectComboBox(QComboBox):
         super().showEvent(event)
         self._scheduleCoalescedUpdate()
         self._syncSelectAllState()
-    
+
     def setCloseOnSelect(self, enabled: bool) -> None:
         """Set whether the popup should close after selecting/toggling an item.
 
@@ -802,7 +802,7 @@ class MultiSelectComboBox(QComboBox):
             if self.model().item(i).data(Qt.ItemDataRole.CheckStateRole) == Qt.CheckState.Checked:
                 res.append((self.model().item(i).text(), self.model().item(i).data(int(self._outputDataRole))))
         return res
-    
+
     def getPlaceholderText(self) -> str:
         """Get the placeholder text currently set for the combo box.
 
@@ -810,7 +810,7 @@ class MultiSelectComboBox(QComboBox):
             str: The placeholder text.
         """
         return self.placeholderText
-    
+
     def setDuplicatesEnabled(self, enabled: bool) -> None:
         """Set whether duplicates are allowed in the combo box.
 
