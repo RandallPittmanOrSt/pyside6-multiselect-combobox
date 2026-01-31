@@ -57,7 +57,7 @@ To use the MultiSelectComboBox widget in your PySide6 application, follow these 
 1. **Installation**: Install the package using pip:
 
    ```shell
-   pip install git+https://github.com/RandallPittmanOrSt/pyside6-multiselect-combobox.git
+   pip install git+https://github.com/RandallPittmanOrSt/pyside6-multiselect-combobox.git@pyside6
    ```
 
    Or install from source (editable/development mode):
